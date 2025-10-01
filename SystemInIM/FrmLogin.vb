@@ -1,6 +1,82 @@
-﻿Public Class FrmLogin
+﻿Imports MySql.Data.MySqlClient
+' Add this line at the top of your FrmLogin file
+
+Public Class FrmLogin
+
+    ' Connection string should be declared once at the class level or form level
+    Private connString As String = "server=localhost; user id=root; password=; database=information_management"
+
+    ' =================================================================
+    '                          LOGIN LOGIC
+    ' =================================================================
+
+    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
+        ' 1. BASIC VALIDATION
+        Dim username As String = txtUsername.Text.Trim()
+        Dim password As String = txtPassword.Text ' Do NOT trim password as spaces might be intentional
+
+        If String.IsNullOrWhiteSpace(username) OrElse String.IsNullOrWhiteSpace(password) Then
+            MessageBox.Show("Please enter both username and password.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        Dim conn As New MySqlConnection(connString)
+        ' *** CHANGED: Get user_id too! ***
+        Dim query As String = "SELECT user_id, username FROM users WHERE username = @user AND password = @pass"
+
+        Try
+            conn.Open()
+            Using cmd As New MySqlCommand(query, conn)
+                cmd.Parameters.AddWithValue("@user", username)
+                cmd.Parameters.AddWithValue("@pass", password)
+
+                Dim reader As MySqlDataReader = cmd.ExecuteReader()
+
+                If reader.Read() Then
+                    ' *** GET user_id and username ***
+                    Dim userId As Integer = Convert.ToInt32(reader("user_id"))
+                    Dim loggedUsername As String = reader("username").ToString()
+                    Dim isAdmin As Boolean = (loggedUsername.ToLower() = "admin")
+
+                    reader.Close()
+
+                    ' Login successful!
+                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    Me.Hide()
+
+                    If isAdmin Then
+                        ' Show Admin Interface
+                        Dim adminForm As New FrmInterface()
+                        adminForm.Show()
+                    Else
+                        ' Show User Interface - *** PASS THE DATA! ***
+                        Dim userForm As New FrmUserInterface()
+                        userForm.LoggedInUserID = userId           ' ← SET THIS!
+                        userForm.LoggedInUsername = loggedUsername ' ← SET THIS!
+                        userForm.Show()
+                    End If
+                Else
+                    ' Login failed
+                    MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    txtPassword.Clear()
+                    txtPassword.Focus()
+                End If
+            End Using
+
+        Catch ex As Exception
+            MessageBox.Show("Database connection error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+        Finally
+            If conn.State = ConnectionState.Open Then conn.Close()
+        End Try
+    End Sub
+
+    ' =================================================================
+    '                          OTHER BUTTONS
+    ' =================================================================
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        txtUsername.Focus()
     End Sub
 
     Private Sub BtnNewAcc_Click(sender As Object, e As EventArgs) Handles BtnNewAcc.Click
@@ -8,20 +84,13 @@
         GoToCreateAcc.Show()
         Me.Hide()
     End Sub
-    Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
-        'Input login succesfully notif
-        'Add database connection here later
-        'Add validation for username and password here later
 
-        Dim productTable As New FrmInterface()
-        productTable.Show()
-        Me.Hide()
-    End Sub
     Private Sub BtnForgotPass_Click(sender As Object, e As EventArgs) Handles BtnForgotPass.Click
         Dim ForgotPass As New FrmForgotPass()
         ForgotPass.Show()
         Me.Hide()
     End Sub
+
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         txtUsername.Clear()
         txtPassword.Clear()

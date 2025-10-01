@@ -27,20 +27,18 @@ Public Class FrmUserCreation
 
     Private Sub BtnRegister_Click(sender As Object, e As EventArgs) Handles BtnRegister.Click
         Dim connStr As String = "Server=localhost;Database=information_management;Uid=root;Pwd=;"
-
         Using conn As New MySqlConnection(connStr)
             Try
                 conn.Open()
-
-                ' Insert new user
-                Dim insertQuery As String = "INSERT INTO users (username, password, security_question, security_answer) " &
-                                            "VALUES (@username, @password, @question, @answer)"
-
+                ' Insert new user with balance = 0.00
+                Dim insertQuery As String = "INSERT INTO users (username, password, security_question, security_answer, balance) " &
+                                    "VALUES (@username, @password, @question, @answer, @balance)"
                 Dim insertCmd As New MySqlCommand(insertQuery, conn)
                 insertCmd.Parameters.AddWithValue("@username", txtCreateUsername.Text)
                 insertCmd.Parameters.AddWithValue("@password", txtCreatePass.Text)
                 insertCmd.Parameters.AddWithValue("@question", cmbSecurityQuestion.SelectedItem.ToString())
                 insertCmd.Parameters.AddWithValue("@answer", txtSecurityAnswer.Text)
+                insertCmd.Parameters.AddWithValue("@balance", 0.0D) ' ← SET BALANCE TO 0
 
                 ' Execute insert
                 insertCmd.ExecuteNonQuery()
@@ -54,14 +52,15 @@ Public Class FrmUserCreation
                 cmbSecurityQuestion.SelectedIndex = -1
 
                 ' Close and go back to login
-                Me.Close()
+                Me.Hide()
+                Dim loginForm As New FrmLogin()
+                loginForm.Show()
 
             Catch ex As Exception
                 MessageBox.Show("Error: " & ex.Message)
             Finally
                 conn.Close()
             End Try
-
         End Using
     End Sub
 

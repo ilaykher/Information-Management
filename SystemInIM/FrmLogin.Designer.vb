@@ -30,81 +30,113 @@ Partial Class FrmLogin
         BtnClear = New Button()
         txtUsername = New TextBox()
         txtPassword = New TextBox()
+        Label1 = New Label()
         SuspendLayout()
         ' 
         ' lblUsername
         ' 
         lblUsername.AutoSize = True
-        lblUsername.Location = New Point(119, 191)
+        lblUsername.Font = New Font("Segoe UI", 12F)
+        lblUsername.Location = New Point(90, 135)
+        lblUsername.Margin = New Padding(2, 0, 2, 0)
         lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(100, 25)
+        lblUsername.Size = New Size(108, 28)
         lblUsername.TabIndex = 1
         lblUsername.Text = "Username: "
         ' 
         ' lblPassword
         ' 
         lblPassword.AutoSize = True
-        lblPassword.Location = New Point(119, 258)
+        lblPassword.Font = New Font("Segoe UI", 12F)
+        lblPassword.Location = New Point(96, 188)
+        lblPassword.Margin = New Padding(2, 0, 2, 0)
         lblPassword.Name = "lblPassword"
-        lblPassword.Size = New Size(96, 25)
+        lblPassword.Size = New Size(102, 28)
         lblPassword.TabIndex = 2
         lblPassword.Text = "Password: "
         ' 
         ' BtnNewAcc
         ' 
-        BtnNewAcc.Location = New Point(119, 397)
+        BtnNewAcc.Font = New Font("Segoe UI", 12F)
+        BtnNewAcc.Location = New Point(173, 318)
+        BtnNewAcc.Margin = New Padding(2)
         BtnNewAcc.Name = "BtnNewAcc"
-        BtnNewAcc.Size = New Size(223, 34)
+        BtnNewAcc.Size = New Size(178, 38)
         BtnNewAcc.TabIndex = 4
         BtnNewAcc.Text = "Create New Account"
         BtnNewAcc.UseVisualStyleBackColor = True
         ' 
         ' BtnForgotPass
         ' 
-        BtnForgotPass.Location = New Point(348, 397)
+        BtnForgotPass.Font = New Font("Segoe UI", 12F)
+        BtnForgotPass.Location = New Point(355, 318)
+        BtnForgotPass.Margin = New Padding(2)
         BtnForgotPass.Name = "BtnForgotPass"
-        BtnForgotPass.Size = New Size(223, 34)
+        BtnForgotPass.Size = New Size(178, 38)
         BtnForgotPass.TabIndex = 5
         BtnForgotPass.Text = "Forgot Password"
         BtnForgotPass.UseVisualStyleBackColor = True
         ' 
         ' BtnLogin
         ' 
-        BtnLogin.Location = New Point(459, 317)
+        BtnLogin.Font = New Font("Segoe UI", 12F)
+        BtnLogin.Location = New Point(443, 239)
+        BtnLogin.Margin = New Padding(2)
         BtnLogin.Name = "BtnLogin"
-        BtnLogin.Size = New Size(112, 34)
+        BtnLogin.Size = New Size(90, 38)
         BtnLogin.TabIndex = 0
         BtnLogin.Text = "Login"
         BtnLogin.UseVisualStyleBackColor = True
         ' 
         ' BtnClear
         ' 
-        BtnClear.Location = New Point(341, 317)
+        BtnClear.Font = New Font("Segoe UI", 12F)
+        BtnClear.Location = New Point(349, 239)
+        BtnClear.Margin = New Padding(2)
         BtnClear.Name = "BtnClear"
-        BtnClear.Size = New Size(112, 34)
+        BtnClear.Size = New Size(90, 38)
         BtnClear.TabIndex = 3
         BtnClear.Text = "Clear"
         BtnClear.UseVisualStyleBackColor = True
         ' 
         ' txtUsername
         ' 
-        txtUsername.Location = New Point(225, 188)
+        txtUsername.Font = New Font("Segoe UI", 10F)
+        txtUsername.Location = New Point(205, 132)
+        txtUsername.Margin = New Padding(2)
         txtUsername.Name = "txtUsername"
-        txtUsername.Size = New Size(346, 31)
+        txtUsername.PlaceholderText = "(Type in your username)"
+        txtUsername.Size = New Size(328, 30)
         txtUsername.TabIndex = 6
         ' 
         ' txtPassword
         ' 
-        txtPassword.Location = New Point(225, 258)
+        txtPassword.Font = New Font("Segoe UI", 10F)
+        txtPassword.Location = New Point(205, 188)
+        txtPassword.Margin = New Padding(2)
         txtPassword.Name = "txtPassword"
-        txtPassword.Size = New Size(346, 31)
+        txtPassword.PlaceholderText = "(Type in your password)"
+        txtPassword.Size = New Size(328, 30)
         txtPassword.TabIndex = 7
+        txtPassword.UseSystemPasswordChar = True
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(136, 55)
+        Label1.Margin = New Padding(2, 0, 2, 0)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(329, 41)
+        Label1.TabIndex = 8
+        Label1.Text = "Device Market System"
         ' 
         ' FrmLogin
         ' 
-        AutoScaleDimensions = New SizeF(10.0F, 25.0F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(778, 544)
+        ClientSize = New Size(622, 435)
+        Controls.Add(Label1)
         Controls.Add(txtPassword)
         Controls.Add(txtUsername)
         Controls.Add(BtnForgotPass)
@@ -131,5 +163,6 @@ Partial Class FrmLogin
     Friend WithEvents BtnClear As Button
     Friend WithEvents txtUsername As TextBox
     Friend WithEvents txtPassword As TextBox
+    Friend WithEvents Label1 As Label
 
 End Class

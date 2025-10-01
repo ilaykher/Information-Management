@@ -34,29 +34,37 @@ Partial Class FrmForgotPass
         BtnConfirmation = New Button()
         BtnUpdatePass = New Button()
         BtnBack = New Button()
+        Label1 = New Label()
         SuspendLayout()
         ' 
         ' lblForgotUsername
         ' 
         lblForgotUsername.AutoSize = True
-        lblForgotUsername.Location = New Point(126, 84)
+        lblForgotUsername.Font = New Font("Segoe UI", 12F)
+        lblForgotUsername.Location = New Point(85, 209)
+        lblForgotUsername.Margin = New Padding(2, 0, 2, 0)
         lblForgotUsername.Name = "lblForgotUsername"
-        lblForgotUsername.Size = New Size(100, 25)
+        lblForgotUsername.Size = New Size(108, 28)
         lblForgotUsername.TabIndex = 0
         lblForgotUsername.Text = "Username: "
         ' 
         ' TxtForgotUsername
         ' 
-        TxtForgotUsername.Location = New Point(232, 81)
+        TxtForgotUsername.Font = New Font("Segoe UI", 10F)
+        TxtForgotUsername.Location = New Point(197, 213)
+        TxtForgotUsername.Margin = New Padding(2)
         TxtForgotUsername.Name = "TxtForgotUsername"
-        TxtForgotUsername.Size = New Size(276, 31)
+        TxtForgotUsername.PlaceholderText = "(e.g. user,Habibi,BarTayo,Jk)"
+        TxtForgotUsername.Size = New Size(298, 30)
         TxtForgotUsername.TabIndex = 1
         ' 
         ' BtnFindUsernameDB
         ' 
-        BtnFindUsernameDB.Location = New Point(514, 78)
+        BtnFindUsernameDB.Font = New Font("Segoe UI", 12F)
+        BtnFindUsernameDB.Location = New Point(511, 213)
+        BtnFindUsernameDB.Margin = New Padding(2)
         BtnFindUsernameDB.Name = "BtnFindUsernameDB"
-        BtnFindUsernameDB.Size = New Size(182, 34)
+        BtnFindUsernameDB.Size = New Size(120, 40)
         BtnFindUsernameDB.TabIndex = 2
         BtnFindUsernameDB.Text = "Find Account"
         BtnFindUsernameDB.UseVisualStyleBackColor = True
@@ -64,9 +72,11 @@ Partial Class FrmForgotPass
         ' lblSec
         ' 
         lblSec.AutoSize = True
-        lblSec.Location = New Point(71, 186)
+        lblSec.Font = New Font("Segoe UI", 12F)
+        lblSec.Location = New Point(23, 255)
+        lblSec.Margin = New Padding(2, 0, 2, 0)
         lblSec.Name = "lblSec"
-        lblSec.Size = New Size(155, 25)
+        lblSec.Size = New Size(170, 28)
         lblSec.TabIndex = 3
         lblSec.Text = "Security Question:"
         lblSec.Visible = False
@@ -74,54 +84,69 @@ Partial Class FrmForgotPass
         ' lblAccountFound
         ' 
         lblAccountFound.AutoSize = True
-        lblAccountFound.Location = New Point(315, 38)
+        lblAccountFound.Font = New Font("Segoe UI", 18F, FontStyle.Bold)
+        lblAccountFound.Location = New Point(85, 150)
+        lblAccountFound.Margin = New Padding(2, 0, 2, 0)
         lblAccountFound.Name = "lblAccountFound"
-        lblAccountFound.Size = New Size(186, 25)
+        lblAccountFound.Size = New Size(327, 41)
         lblAccountFound.TabIndex = 4
         lblAccountFound.Text = "Account: UserAccount"
         lblAccountFound.Visible = False
         ' 
         ' TxtSecurityAns
         ' 
-        TxtSecurityAns.Location = New Point(232, 237)
+        TxtSecurityAns.Font = New Font("Segoe UI", 10F)
+        TxtSecurityAns.Location = New Point(200, 308)
+        TxtSecurityAns.Margin = New Padding(2)
         TxtSecurityAns.Name = "TxtSecurityAns"
-        TxtSecurityAns.Size = New Size(276, 31)
+        TxtSecurityAns.PlaceholderText = "(Input your answer here)"
+        TxtSecurityAns.Size = New Size(295, 30)
         TxtSecurityAns.TabIndex = 5
         TxtSecurityAns.Visible = False
         ' 
         ' lblSecurityQuestion
         ' 
         lblSecurityQuestion.AutoSize = True
-        lblSecurityQuestion.Location = New Point(340, 186)
+        lblSecurityQuestion.Font = New Font("Segoe UI", 12F)
+        lblSecurityQuestion.Location = New Point(197, 255)
+        lblSecurityQuestion.Margin = New Padding(2, 0, 2, 0)
         lblSecurityQuestion.Name = "lblSecurityQuestion"
-        lblSecurityQuestion.Size = New Size(63, 25)
+        lblSecurityQuestion.Size = New Size(260, 28)
         lblSecurityQuestion.TabIndex = 6
-        lblSecurityQuestion.Text = "Label1"
+        lblSecurityQuestion.Text = "Shows the Security Question"
         lblSecurityQuestion.Visible = False
         ' 
         ' lblNewPass
         ' 
         lblNewPass.AutoSize = True
-        lblNewPass.Location = New Point(95, 326)
+        lblNewPass.Font = New Font("Segoe UI", 12F)
+        lblNewPass.Location = New Point(52, 304)
+        lblNewPass.Margin = New Padding(2, 0, 2, 0)
         lblNewPass.Name = "lblNewPass"
-        lblNewPass.Size = New Size(131, 25)
+        lblNewPass.Size = New Size(141, 28)
         lblNewPass.TabIndex = 7
         lblNewPass.Text = "New Password:"
         lblNewPass.Visible = False
         ' 
         ' TxtNewPass
         ' 
-        TxtNewPass.Location = New Point(232, 326)
+        TxtNewPass.Font = New Font("Segoe UI", 10F)
+        TxtNewPass.Location = New Point(197, 360)
+        TxtNewPass.Margin = New Padding(2)
         TxtNewPass.Name = "TxtNewPass"
-        TxtNewPass.Size = New Size(276, 31)
+        TxtNewPass.PlaceholderText = "(Type in your new password)"
+        TxtNewPass.Size = New Size(298, 30)
         TxtNewPass.TabIndex = 8
+        TxtNewPass.UseSystemPasswordChar = True
         TxtNewPass.Visible = False
         ' 
         ' BtnConfirmation
         ' 
-        BtnConfirmation.Location = New Point(514, 234)
+        BtnConfirmation.Font = New Font("Segoe UI", 12F)
+        BtnConfirmation.Location = New Point(511, 298)
+        BtnConfirmation.Margin = New Padding(2)
         BtnConfirmation.Name = "BtnConfirmation"
-        BtnConfirmation.Size = New Size(182, 34)
+        BtnConfirmation.Size = New Size(120, 40)
         BtnConfirmation.TabIndex = 9
         BtnConfirmation.Text = "Confirm"
         BtnConfirmation.UseVisualStyleBackColor = True
@@ -129,9 +154,11 @@ Partial Class FrmForgotPass
         ' 
         ' BtnUpdatePass
         ' 
-        BtnUpdatePass.Location = New Point(514, 326)
+        BtnUpdatePass.Font = New Font("Segoe UI", 12F)
+        BtnUpdatePass.Location = New Point(511, 360)
+        BtnUpdatePass.Margin = New Padding(2)
         BtnUpdatePass.Name = "BtnUpdatePass"
-        BtnUpdatePass.Size = New Size(182, 34)
+        BtnUpdatePass.Size = New Size(120, 40)
         BtnUpdatePass.TabIndex = 10
         BtnUpdatePass.Text = "Update Password"
         BtnUpdatePass.UseVisualStyleBackColor = True
@@ -139,18 +166,31 @@ Partial Class FrmForgotPass
         ' 
         ' BtnBack
         ' 
-        BtnBack.Location = New Point(12, 29)
+        BtnBack.Font = New Font("Segoe UI", 12F)
+        BtnBack.Location = New Point(625, 21)
+        BtnBack.Margin = New Padding(2)
         BtnBack.Name = "BtnBack"
-        BtnBack.Size = New Size(158, 34)
+        BtnBack.Size = New Size(146, 40)
         BtnBack.TabIndex = 11
         BtnBack.Text = "Back to Login"
         BtnBack.UseVisualStyleBackColor = True
         ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 18F, FontStyle.Bold)
+        Label1.Location = New Point(23, 17)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(385, 82)
+        Label1.TabIndex = 12
+        Label1.Text = "Fill-up the corresponding " & vbCrLf & "information"
+        ' 
         ' FrmForgotPass
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(782, 553)
+        Controls.Add(Label1)
         Controls.Add(BtnBack)
         Controls.Add(BtnUpdatePass)
         Controls.Add(BtnConfirmation)
@@ -163,6 +203,7 @@ Partial Class FrmForgotPass
         Controls.Add(BtnFindUsernameDB)
         Controls.Add(TxtForgotUsername)
         Controls.Add(lblForgotUsername)
+        Margin = New Padding(2)
         Name = "FrmForgotPass"
         StartPosition = FormStartPosition.CenterScreen
         Text = "FrmForgotPass"
@@ -182,4 +223,5 @@ Partial Class FrmForgotPass
     Friend WithEvents BtnConfirmation As Button
     Friend WithEvents BtnUpdatePass As Button
     Friend WithEvents BtnBack As Button
+    Friend WithEvents Label1 As Label
 End Class

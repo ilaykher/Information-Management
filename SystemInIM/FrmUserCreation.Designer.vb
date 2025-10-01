@@ -33,106 +33,144 @@ Partial Class FrmUserCreation
         BtnBackToLogin = New Button()
         BtnClear = New Button()
         BtnRegister = New Button()
+        Label1 = New Label()
         SuspendLayout()
         ' 
         ' txtCreateUsername
         ' 
-        txtCreateUsername.Location = New Point(271, 68)
+        txtCreateUsername.Font = New Font("Segoe UI", 10F)
+        txtCreateUsername.Location = New Point(286, 214)
+        txtCreateUsername.Margin = New Padding(2)
         txtCreateUsername.Name = "txtCreateUsername"
-        txtCreateUsername.Size = New Size(331, 31)
+        txtCreateUsername.PlaceholderText = "(e.g. user,Habibi,BarTayo,Jk)"
+        txtCreateUsername.Size = New Size(266, 30)
         txtCreateUsername.TabIndex = 0
         ' 
         ' txtCreatePass
         ' 
-        txtCreatePass.Location = New Point(271, 115)
+        txtCreatePass.Font = New Font("Segoe UI", 10F)
+        txtCreatePass.Location = New Point(286, 252)
+        txtCreatePass.Margin = New Padding(2)
         txtCreatePass.Name = "txtCreatePass"
-        txtCreatePass.Size = New Size(331, 31)
+        txtCreatePass.PlaceholderText = "(Type in your password)"
+        txtCreatePass.Size = New Size(266, 30)
         txtCreatePass.TabIndex = 1
         ' 
         ' txtSecurityAnswer
         ' 
-        txtSecurityAnswer.Location = New Point(271, 259)
+        txtSecurityAnswer.Font = New Font("Segoe UI", 10F)
+        txtSecurityAnswer.Location = New Point(286, 337)
+        txtSecurityAnswer.Margin = New Padding(2)
         txtSecurityAnswer.Name = "txtSecurityAnswer"
-        txtSecurityAnswer.Size = New Size(331, 31)
+        txtSecurityAnswer.PlaceholderText = "(Type in your answer)"
+        txtSecurityAnswer.Size = New Size(266, 30)
         txtSecurityAnswer.TabIndex = 3
         ' 
         ' cmbSecurityQuestion
         ' 
+        cmbSecurityQuestion.Font = New Font("Segoe UI", 10F)
         cmbSecurityQuestion.FormattingEnabled = True
         cmbSecurityQuestion.Items.AddRange(New Object() {"What is your favorite color?", "In what city you were born?", "What was the name of your first pet?", "What's your mother's maiden name?", "What is your birthdate?"})
-        cmbSecurityQuestion.Location = New Point(271, 208)
+        cmbSecurityQuestion.Location = New Point(286, 300)
+        cmbSecurityQuestion.Margin = New Padding(2)
         cmbSecurityQuestion.Name = "cmbSecurityQuestion"
-        cmbSecurityQuestion.Size = New Size(331, 33)
+        cmbSecurityQuestion.Size = New Size(266, 31)
         cmbSecurityQuestion.TabIndex = 4
+        cmbSecurityQuestion.Text = "--Select--"
         ' 
         ' lblUsername
         ' 
         lblUsername.AutoSize = True
-        lblUsername.Location = New Point(150, 74)
+        lblUsername.Font = New Font("Segoe UI", 12F)
+        lblUsername.Location = New Point(165, 214)
+        lblUsername.Margin = New Padding(2, 0, 2, 0)
         lblUsername.Name = "lblUsername"
-        lblUsername.Size = New Size(100, 25)
+        lblUsername.Size = New Size(108, 28)
         lblUsername.TabIndex = 5
         lblUsername.Text = "Username: "
         ' 
         ' lblPass
         ' 
         lblPass.AutoSize = True
-        lblPass.Location = New Point(154, 121)
+        lblPass.Font = New Font("Segoe UI", 12F)
+        lblPass.Location = New Point(171, 255)
+        lblPass.Margin = New Padding(2, 0, 2, 0)
         lblPass.Name = "lblPass"
-        lblPass.Size = New Size(96, 25)
+        lblPass.Size = New Size(102, 28)
         lblPass.TabIndex = 6
         lblPass.Text = "Password: "
         ' 
         ' lblSecQues
         ' 
         lblSecQues.AutoSize = True
-        lblSecQues.Location = New Point(82, 211)
+        lblSecQues.Font = New Font("Segoe UI", 12F)
+        lblSecQues.Location = New Point(90, 296)
+        lblSecQues.Margin = New Padding(2, 0, 2, 0)
         lblSecQues.Name = "lblSecQues"
-        lblSecQues.Size = New Size(168, 25)
+        lblSecQues.Size = New Size(183, 28)
         lblSecQues.TabIndex = 7
         lblSecQues.Text = "Security Questions: "
         ' 
         ' lblAnswer
         ' 
         lblAnswer.AutoSize = True
-        lblAnswer.Location = New Point(171, 262)
+        lblAnswer.Font = New Font("Segoe UI", 12F)
+        lblAnswer.Location = New Point(189, 333)
+        lblAnswer.Margin = New Padding(2, 0, 2, 0)
         lblAnswer.Name = "lblAnswer"
-        lblAnswer.Size = New Size(79, 25)
+        lblAnswer.Size = New Size(84, 28)
         lblAnswer.TabIndex = 8
         lblAnswer.Text = "Answer: "
         ' 
         ' BtnBackToLogin
         ' 
-        BtnBackToLogin.Location = New Point(645, 12)
+        BtnBackToLogin.Font = New Font("Segoe UI", 12F)
+        BtnBackToLogin.Location = New Point(624, 26)
+        BtnBackToLogin.Margin = New Padding(2)
         BtnBackToLogin.Name = "BtnBackToLogin"
-        BtnBackToLogin.Size = New Size(143, 34)
+        BtnBackToLogin.Size = New Size(147, 37)
         BtnBackToLogin.TabIndex = 9
         BtnBackToLogin.Text = "Back to Login"
         BtnBackToLogin.UseVisualStyleBackColor = True
         ' 
         ' BtnClear
         ' 
-        BtnClear.Location = New Point(372, 317)
+        BtnClear.Font = New Font("Segoe UI", 12F)
+        BtnClear.Location = New Point(368, 377)
+        BtnClear.Margin = New Padding(2)
         BtnClear.Name = "BtnClear"
-        BtnClear.Size = New Size(112, 34)
+        BtnClear.Size = New Size(90, 36)
         BtnClear.TabIndex = 10
         BtnClear.Text = "Clear"
         BtnClear.UseVisualStyleBackColor = True
         ' 
         ' BtnRegister
         ' 
-        BtnRegister.Location = New Point(490, 317)
+        BtnRegister.Font = New Font("Segoe UI", 12F)
+        BtnRegister.Location = New Point(462, 377)
+        BtnRegister.Margin = New Padding(2)
         BtnRegister.Name = "BtnRegister"
-        BtnRegister.Size = New Size(112, 34)
+        BtnRegister.Size = New Size(90, 36)
         BtnRegister.TabIndex = 11
         BtnRegister.Text = "Register"
         BtnRegister.UseVisualStyleBackColor = True
         ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(249, 143)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(274, 41)
+        Label1.TabIndex = 12
+        Label1.Text = "Create an Account"
+        ' 
         ' FrmUserCreation
         ' 
-        AutoScaleDimensions = New SizeF(10F, 25F)
+        AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(782, 553)
+        Controls.Add(Label1)
         Controls.Add(BtnRegister)
         Controls.Add(BtnClear)
         Controls.Add(BtnBackToLogin)
@@ -144,6 +182,7 @@ Partial Class FrmUserCreation
         Controls.Add(txtSecurityAnswer)
         Controls.Add(txtCreatePass)
         Controls.Add(txtCreateUsername)
+        Margin = New Padding(2)
         Name = "FrmUserCreation"
         StartPosition = FormStartPosition.CenterScreen
         Text = "Shopipi"
@@ -162,4 +201,5 @@ Partial Class FrmUserCreation
     Friend WithEvents BtnBackToLogin As Button
     Friend WithEvents BtnClear As Button
     Friend WithEvents BtnRegister As Button
+    Friend WithEvents Label1 As Label
 End Class
