@@ -6,9 +6,9 @@ Public Class FrmLogin
     ' Connection string should be declared once at the class level or form level
     Private connString As String = "server=localhost; user id=root; password=; database=information_management"
 
-    ' =================================================================
-    '                          LOGIN LOGIC
-    ' =================================================================
+
+    ' LOGIN LOGIC
+
 
     Private Sub BtnLogin_Click(sender As Object, e As EventArgs) Handles BtnLogin.Click
         ' 1. BASIC VALIDATION
@@ -20,8 +20,26 @@ Public Class FrmLogin
             Return
         End If
 
+        If username.Length < 3 Then
+            MessageBox.Show("Username must be at least 3 characters", "Validation Error")
+            Return
+        End If
+
+
+        'For when an admin is loggin in
+
+        If username.Equals("admin", StringComparison.OrdinalIgnoreCase) Then
+        ElseIf password.Length < 6 Then
+
+            MessageBox.Show("Password must be at least 6 characters", "Validation Error")
+            Return
+        End If
+        '=====================
+
+
+
         Dim conn As New MySqlConnection(connString)
-        ' *** CHANGED: Get user_id too! ***
+
         Dim query As String = "SELECT user_id, username FROM users WHERE username = @user AND password = @pass"
 
         Try
@@ -71,9 +89,9 @@ Public Class FrmLogin
         End Try
     End Sub
 
-    ' =================================================================
-    '                          OTHER BUTTONS
-    ' =================================================================
+
+    '  OTHER BUTTONS
+
     Private Sub FrmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         txtUsername.Focus()
@@ -92,8 +110,18 @@ Public Class FrmLogin
     End Sub
 
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
+        If String.IsNullOrWhiteSpace(txtUsername.Text) And String.IsNullOrWhiteSpace(txtPassword.Text) Then
+            MessageBox.Show("Fields are already empty.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return ' Exit without clearing since already empty
+        End If
+
+        ' Clear the fields
         txtUsername.Clear()
         txtPassword.Clear()
         txtUsername.Focus()
+    End Sub
+
+    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
+
     End Sub
 End Class

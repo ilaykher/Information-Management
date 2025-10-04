@@ -2,14 +2,28 @@
 
 Public Class FrmForgotPass
 
-    ' Database connection string
+    'DB
     Private connStr As String = "Server=localhost;Database=information_management;Uid=root;Pwd=;"
 
     ' Store the username being recovered
     Private currentUsername As String = ""
 
-    ' Step 1: Find Username
+    ' Find Username
     Private Sub BtnFindUsernameDB_Click(sender As Object, e As EventArgs) Handles BtnFindUsernameDB.Click
+        Dim inputUsername As String = TxtForgotUsername.Text.Trim()
+
+        If String.IsNullOrWhiteSpace(inputUsername) Then
+            MessageBox.Show("Enter a username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtForgotUsername.Focus()
+            Return
+        End If
+
+        If inputUsername.Length < 3 Then
+            MessageBox.Show("Username should be at least 3 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtForgotUsername.Focus()
+            Return
+        End If
+
         Using conn As New MySqlConnection(connStr)
             Try
                 conn.Open()
@@ -31,6 +45,7 @@ Public Class FrmForgotPass
                     lblSec.Visible = True
                     TxtSecurityAns.Visible = True
                     BtnConfirmation.Visible = True
+                    lblAnswerSec.Visible = True
                 Else
                     MessageBox.Show("No account found. Double-check the username or create a new account.")
                 End If
@@ -42,8 +57,23 @@ Public Class FrmForgotPass
         End Using
     End Sub
 
-    ' Step 2: Confirm Security Answer
+
+    'Confirm Security Answer
     Private Sub BtnConfirmation_Click(sender As Object, e As EventArgs) Handles BtnConfirmation.Click
+        Dim inputAnswer As String = TxtSecurityAns.Text.Trim()
+
+        If String.IsNullOrWhiteSpace(inputAnswer) Then
+            MessageBox.Show("Enter your security answer.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtSecurityAns.Focus()
+            Return
+        End If
+
+        If currentUsername = "" Then
+            MessageBox.Show("Find your account first.", "Process Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            TxtForgotUsername.Focus()
+            Return
+        End If
+
         Using conn As New MySqlConnection(connStr)
             Try
                 conn.Open()
@@ -63,6 +93,7 @@ Public Class FrmForgotPass
                 Else
                     MessageBox.Show("Incorrect security answer. Try again.")
                     TxtSecurityAns.Clear()
+                    TxtSecurityAns.Focus()
                 End If
 
             Catch ex As Exception
@@ -73,6 +104,47 @@ Public Class FrmForgotPass
 
     ' Step 3: Update Password
     Private Sub BtnUpdatePass_Click(sender As Object, e As EventArgs) Handles BtnUpdatePass.Click
+        Dim newPassword As String = TxtNewPass.Text ' Do NOT trim for security reasons
+
+        If String.IsNullOrEmpty(newPassword) Then
+            MessageBox.Show("Enter a new password.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtNewPass.Focus()
+            Return
+        End If
+
+        If newPassword.Length < 6 Then
+            MessageBox.Show("New password should be at least 6 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            TxtNewPass.Focus()
+            Return
+        End If
+
+        Dim oldPassword As String = ""
+        Using connCheck As New MySqlConnection(connStr)
+            Try
+                connCheck.Open()
+                ' Query to fetch the current/old password
+                Dim checkQuery As String = "SELECT password FROM users WHERE username = @username"
+                Using checkCmd As New MySqlCommand(checkQuery, connCheck)
+                    checkCmd.Parameters.AddWithValue("@username", currentUsername)
+                    oldPassword = checkCmd.ExecuteScalar()?.ToString()
+                End Using
+            Catch ex As Exception
+                ' Handle error but allow the process to continue by showing an error message
+                ' Returning True here would stop the update, which is a safer default.
+                MessageBox.Show("Error checking existing password: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return
+            End Try
+        End Using
+
+        If newPassword = oldPassword Then
+            MessageBox.Show("The new password cannot be the same as your old password. Please choose a different one.", "Security Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop)
+            TxtNewPass.Clear()
+            TxtNewPass.Focus()
+            Return
+        End If
+
+
+
         Using conn As New MySqlConnection(connStr)
             Try
                 conn.Open()
@@ -107,11 +179,7 @@ Public Class FrmForgotPass
         Me.Hide()
     End Sub
 
-    Private Sub lblSecurityQuestion_Click(sender As Object, e As EventArgs) Handles lblSecurityQuestion.Click
-
-    End Sub
-
-    Private Sub lblForgotUsername_Click(sender As Object, e As EventArgs) Handles lblForgotUsername.Click
+    Private Sub FrmForgotPass_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

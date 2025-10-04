@@ -1,13 +1,15 @@
-﻿Imports Mysql.Data.MySqlClient
-
-
-
-
+﻿Imports MySql.Data.MySqlClient
 
 Public Class FrmUserCreation
-
+    Private connStr As String = "Server=localhost;Database=information_management;Uid=root;Pwd=;"
 
     Private Sub FrmUserCreation_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        If cmbSecurityQuestion.Items.Count > 0 Then
+            cmbSecurityQuestion.SelectedIndex = 0
+        End If
+
+        txtCreateUsername.Focus()
 
     End Sub
 
@@ -15,7 +17,7 @@ Public Class FrmUserCreation
         txtCreateUsername.Clear()
         txtCreatePass.Clear()
         txtSecurityAnswer.Clear()
-
+        cmbSecurityQuestion.SelectedIndex = 0
         txtCreateUsername.Focus()
     End Sub
 
@@ -26,47 +28,113 @@ Public Class FrmUserCreation
     End Sub
 
     Private Sub BtnRegister_Click(sender As Object, e As EventArgs) Handles BtnRegister.Click
-        Dim connStr As String = "Server=localhost;Database=information_management;Uid=root;Pwd=;"
+
+        If cmbSecurityQuestion.SelectedIndex = -1 Then
+            MessageBox.Show("Please select a security question.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cmbSecurityQuestion.Focus()
+            Return
+        End If
+
+        If cmbSecurityQuestion.SelectedIndex = 0 Then
+            MessageBox.Show("Please select a valid security question.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            cmbSecurityQuestion.Focus()
+            Return
+        End If
+
+        ' 1. EMPTY FIELD VALIDATION
+        If String.IsNullOrWhiteSpace(txtCreateUsername.Text) OrElse
+           String.IsNullOrWhiteSpace(txtCreatePass.Text) OrElse
+           String.IsNullOrWhiteSpace(txtSecurityAnswer.Text) OrElse
+           cmbSecurityQuestion.SelectedIndex = -1 Then
+            MessageBox.Show("Please fill in all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Return
+        End If
+
+        ' 2. USERNAME LENGTH VALIDATION (minimum 3 characters)
+        If txtCreateUsername.Text.Trim().Length < 3 Then
+            MessageBox.Show("Username should be at least 3 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtCreateUsername.Focus()
+            Return
+        End If
+
+        ' 3. PASSWORD LENGTH VALIDATION (minimum 6 characters)
+        If txtCreatePass.Text.Length < 6 Then
+            MessageBox.Show("Password should be at least 6 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtCreatePass.Focus()
+            Return
+        End If
+
+        ' 4. SECURITY ANSWER LENGTH VALIDATION
+        If txtSecurityAnswer.Text.Trim().Length < 2 Then
+            MessageBox.Show("Security answer should be at least 2 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtSecurityAnswer.Focus()
+            Return
+        End If
+
+        ' For avoiding creation of admin
+        If txtCreateUsername.Text.Trim().Equals("admin", StringComparison.OrdinalIgnoreCase) Then
+            MessageBox.Show("The username 'admin' cannot be used for registration.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtCreateUsername.Focus()
+            Return
+        End If
+
+        ' 5. CHECK IF USERNAME ALREADY EXISTS
+        If UsernameExists(txtCreateUsername.Text.Trim()) Then
+            MessageBox.Show("Username already exists. Please choose another.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtCreateUsername.Focus()
+            Return
+        End If
+
+        ' 6. PROCEED WITH REGISTRATION
         Using conn As New MySqlConnection(connStr)
             Try
                 conn.Open()
-                ' Insert new user with balance = 0.00
                 Dim insertQuery As String = "INSERT INTO users (username, password, security_question, security_answer, balance) " &
-                                    "VALUES (@username, @password, @question, @answer, @balance)"
-                Dim insertCmd As New MySqlCommand(insertQuery, conn)
-                insertCmd.Parameters.AddWithValue("@username", txtCreateUsername.Text)
-                insertCmd.Parameters.AddWithValue("@password", txtCreatePass.Text)
-                insertCmd.Parameters.AddWithValue("@question", cmbSecurityQuestion.SelectedItem.ToString())
-                insertCmd.Parameters.AddWithValue("@answer", txtSecurityAnswer.Text)
-                insertCmd.Parameters.AddWithValue("@balance", 0.0D) ' ← SET BALANCE TO 0
+                                            "VALUES (@username, @password, @question, @answer, @balance)"
 
-                ' Execute insert
-                insertCmd.ExecuteNonQuery()
+                Using insertCmd As New MySqlCommand(insertQuery, conn)
+                    insertCmd.Parameters.AddWithValue("@username", txtCreateUsername.Text.Trim())
+                    insertCmd.Parameters.AddWithValue("@password", txtCreatePass.Text)
+                    insertCmd.Parameters.AddWithValue("@question", cmbSecurityQuestion.SelectedItem.ToString())
+                    insertCmd.Parameters.AddWithValue("@answer", txtSecurityAnswer.Text.Trim())
+                    insertCmd.Parameters.AddWithValue("@balance", 0.0D)
 
-                MessageBox.Show("Account created successfully!")
+                    insertCmd.ExecuteNonQuery()
+                End Using
 
-                ' Clear form
-                txtCreateUsername.Clear()
-                txtCreatePass.Clear()
-                txtSecurityAnswer.Clear()
-                cmbSecurityQuestion.SelectedIndex = -1
+                MessageBox.Show("Account created successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                ' Close and go back to login
+                ' Go back to login
                 Me.Hide()
                 Dim loginForm As New FrmLogin()
                 loginForm.Show()
 
             Catch ex As Exception
-                MessageBox.Show("Error: " & ex.Message)
-            Finally
-                conn.Close()
+                MessageBox.Show("Error creating account: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
         End Using
     End Sub
 
-    Private Sub txtSecurityAnswer_TextChanged(sender As Object, e As EventArgs) Handles txtSecurityAnswer.TextChanged
+    ' HELPER FUNCTION: Check if username exists
+    Private Function UsernameExists(username As String) As Boolean
+        Using conn As New MySqlConnection(connStr)
+            Try
+                conn.Open()
+                Dim query As String = "SELECT COUNT(*) FROM users WHERE username = @user"
 
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@user", username)
+                    Dim count As Integer = Convert.ToInt32(cmd.ExecuteScalar())
+                    Return count > 0
+                End Using
+
+            Catch ex As Exception
+                MessageBox.Show("Error checking username: " & ex.Message, "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return True ' Return true to prevent registration on error
+            End Try
+        End Using
+    End Function
+
+    Private Sub txtSecurityAnswer_TextChanged(sender As Object, e As EventArgs) Handles txtSecurityAnswer.TextChanged
     End Sub
 End Class
-
-

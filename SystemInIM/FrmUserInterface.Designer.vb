@@ -42,7 +42,6 @@ Partial Class FrmUserInterface
         lblWelcome = New Label()
         tbControlMain = New TabControl()
         TabPage1 = New TabPage()
-        BtnViewDetails = New Button()
         TabPage2 = New TabPage()
         BtnRemoveAll = New Button()
         BtnRefreshAll = New Button()
@@ -177,7 +176,7 @@ Partial Class FrmUserInterface
         ' BtnRefresh
         ' 
         BtnRefresh.Font = New Font("Segoe UI", 18F, FontStyle.Bold)
-        BtnRefresh.Location = New Point(77, 505)
+        BtnRefresh.Location = New Point(77, 380)
         BtnRefresh.Name = "BtnRefresh"
         BtnRefresh.Size = New Size(190, 101)
         BtnRefresh.TabIndex = 20
@@ -291,7 +290,6 @@ Partial Class FrmUserInterface
         ' TabPage1
         ' 
         TabPage1.Controls.Add(BtnRefresh)
-        TabPage1.Controls.Add(BtnViewDetails)
         TabPage1.Controls.Add(BtnBuyNow)
         TabPage1.Controls.Add(BtnAddToCart)
         TabPage1.Controls.Add(dgvProductDisplay)
@@ -304,16 +302,6 @@ Partial Class FrmUserInterface
         TabPage1.TabIndex = 0
         TabPage1.Text = "Shop"
         TabPage1.UseVisualStyleBackColor = True
-        ' 
-        ' BtnViewDetails
-        ' 
-        BtnViewDetails.Font = New Font("Segoe UI", 18F, FontStyle.Bold)
-        BtnViewDetails.Location = New Point(77, 375)
-        BtnViewDetails.Name = "BtnViewDetails"
-        BtnViewDetails.Size = New Size(190, 101)
-        BtnViewDetails.TabIndex = 20
-        BtnViewDetails.Text = "View Details"
-        BtnViewDetails.UseVisualStyleBackColor = True
         ' 
         ' TabPage2
         ' 
@@ -456,7 +444,7 @@ Partial Class FrmUserInterface
         Cursor = Cursors.Hand
         Name = "FrmUserInterface"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Shopipi"
+        Text = "Device Market System"
         WindowState = FormWindowState.Maximized
         CType(dgvProductDisplay, ComponentModel.ISupportInitialize).EndInit()
         pnlSearchBar.ResumeLayout(False)
@@ -502,5 +490,4 @@ Partial Class FrmUserInterface
     Friend WithEvents Label2 As Label
     Friend WithEvents DataGridView1 As DataGridView
     Friend WithEvents BtnRemoveAll As Button
-    Friend WithEvents BtnViewDetails As Button
 End Class

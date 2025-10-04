@@ -42,7 +42,7 @@ Partial Class FrmUserCreation
         txtCreateUsername.Location = New Point(286, 214)
         txtCreateUsername.Margin = New Padding(2)
         txtCreateUsername.Name = "txtCreateUsername"
-        txtCreateUsername.PlaceholderText = "(e.g. user,Habibi,BarTayo,Jk)"
+        txtCreateUsername.PlaceholderText = "(e.g. user)"
         txtCreateUsername.Size = New Size(266, 30)
         txtCreateUsername.TabIndex = 0
         ' 
@@ -70,13 +70,12 @@ Partial Class FrmUserCreation
         ' 
         cmbSecurityQuestion.Font = New Font("Segoe UI", 10F)
         cmbSecurityQuestion.FormattingEnabled = True
-        cmbSecurityQuestion.Items.AddRange(New Object() {"What is your favorite color?", "In what city you were born?", "What was the name of your first pet?", "What's your mother's maiden name?", "What is your birthdate?"})
+        cmbSecurityQuestion.Items.AddRange(New Object() {"--Select--", "What is your favorite color?", "In what city you were born?", "What was the name of your first pet?", "What's your mother's maiden name?", "What is your birthdate?"})
         cmbSecurityQuestion.Location = New Point(286, 300)
         cmbSecurityQuestion.Margin = New Padding(2)
         cmbSecurityQuestion.Name = "cmbSecurityQuestion"
         cmbSecurityQuestion.Size = New Size(266, 31)
         cmbSecurityQuestion.TabIndex = 4
-        cmbSecurityQuestion.Text = "--Select--"
         ' 
         ' lblUsername
         ' 
@@ -185,7 +184,7 @@ Partial Class FrmUserCreation
         Margin = New Padding(2)
         Name = "FrmUserCreation"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Shopipi"
+        Text = "Device Market System"
         ResumeLayout(False)
         PerformLayout()
     End Sub

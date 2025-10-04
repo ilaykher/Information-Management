@@ -35,6 +35,7 @@ Partial Class FrmForgotPass
         BtnUpdatePass = New Button()
         BtnBack = New Button()
         Label1 = New Label()
+        lblAnswerSec = New Label()
         SuspendLayout()
         ' 
         ' lblForgotUsername
@@ -54,7 +55,7 @@ Partial Class FrmForgotPass
         TxtForgotUsername.Location = New Point(197, 213)
         TxtForgotUsername.Margin = New Padding(2)
         TxtForgotUsername.Name = "TxtForgotUsername"
-        TxtForgotUsername.PlaceholderText = "(e.g. user,Habibi,BarTayo,Jk)"
+        TxtForgotUsername.PlaceholderText = "(e.g. user)"
         TxtForgotUsername.Size = New Size(298, 30)
         TxtForgotUsername.TabIndex = 1
         ' 
@@ -96,7 +97,7 @@ Partial Class FrmForgotPass
         ' TxtSecurityAns
         ' 
         TxtSecurityAns.Font = New Font("Segoe UI", 10F)
-        TxtSecurityAns.Location = New Point(200, 308)
+        TxtSecurityAns.Location = New Point(200, 309)
         TxtSecurityAns.Margin = New Padding(2)
         TxtSecurityAns.Name = "TxtSecurityAns"
         TxtSecurityAns.PlaceholderText = "(Input your answer here)"
@@ -120,7 +121,7 @@ Partial Class FrmForgotPass
         ' 
         lblNewPass.AutoSize = True
         lblNewPass.Font = New Font("Segoe UI", 12F)
-        lblNewPass.Location = New Point(52, 304)
+        lblNewPass.Location = New Point(52, 366)
         lblNewPass.Margin = New Padding(2, 0, 2, 0)
         lblNewPass.Name = "lblNewPass"
         lblNewPass.Size = New Size(141, 28)
@@ -185,11 +186,24 @@ Partial Class FrmForgotPass
         Label1.TabIndex = 12
         Label1.Text = "Fill-up the corresponding " & vbCrLf & "information"
         ' 
+        ' lblAnswerSec
+        ' 
+        lblAnswerSec.AutoSize = True
+        lblAnswerSec.Font = New Font("Segoe UI", 12F)
+        lblAnswerSec.Location = New Point(114, 310)
+        lblAnswerSec.Margin = New Padding(2, 0, 2, 0)
+        lblAnswerSec.Name = "lblAnswerSec"
+        lblAnswerSec.Size = New Size(79, 28)
+        lblAnswerSec.TabIndex = 13
+        lblAnswerSec.Text = "Answer:"
+        lblAnswerSec.Visible = False
+        ' 
         ' FrmForgotPass
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(782, 553)
+        Controls.Add(lblAnswerSec)
         Controls.Add(Label1)
         Controls.Add(BtnBack)
         Controls.Add(BtnUpdatePass)
@@ -206,7 +220,7 @@ Partial Class FrmForgotPass
         Margin = New Padding(2)
         Name = "FrmForgotPass"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "FrmForgotPass"
+        Text = "Device Market System"
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -224,4 +238,5 @@ Partial Class FrmForgotPass
     Friend WithEvents BtnUpdatePass As Button
     Friend WithEvents BtnBack As Button
     Friend WithEvents Label1 As Label
+    Friend WithEvents lblAnswerSec As Label
 End Class

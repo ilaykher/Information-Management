@@ -58,10 +58,10 @@ Partial Class FrmLogin
         ' BtnNewAcc
         ' 
         BtnNewAcc.Font = New Font("Segoe UI", 12F)
-        BtnNewAcc.Location = New Point(173, 318)
+        BtnNewAcc.Location = New Point(139, 318)
         BtnNewAcc.Margin = New Padding(2)
         BtnNewAcc.Name = "BtnNewAcc"
-        BtnNewAcc.Size = New Size(178, 38)
+        BtnNewAcc.Size = New Size(212, 38)
         BtnNewAcc.TabIndex = 4
         BtnNewAcc.Text = "Create New Account"
         BtnNewAcc.UseVisualStyleBackColor = True
@@ -124,7 +124,7 @@ Partial Class FrmLogin
         ' 
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label1.Location = New Point(136, 55)
+        Label1.Location = New Point(147, 55)
         Label1.Margin = New Padding(2, 0, 2, 0)
         Label1.Name = "Label1"
         Label1.Size = New Size(329, 41)
@@ -148,7 +148,7 @@ Partial Class FrmLogin
         Margin = New Padding(2)
         Name = "FrmLogin"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Shopipi System"
+        Text = "Device Market System"
         ResumeLayout(False)
         PerformLayout()
     End Sub

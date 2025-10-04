@@ -22,7 +22,7 @@ Partial Class FrmInterface
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         pnlHeader = New Panel()
         BtnLogout = New Button()
         lblDeviceMarketSystem = New Label()
@@ -51,6 +51,7 @@ Partial Class FrmInterface
         lblCategories = New Label()
         lblName = New Label()
         pbPicture = New PictureBox()
+        Label1 = New Label()
         pnlHeader.SuspendLayout()
         pnlSearchBar.SuspendLayout()
         CType(dgvProductDisplay, ComponentModel.ISupportInitialize).BeginInit()
@@ -61,6 +62,7 @@ Partial Class FrmInterface
         ' 
         ' pnlHeader
         ' 
+        pnlHeader.Controls.Add(Label1)
         pnlHeader.Controls.Add(BtnLogout)
         pnlHeader.Controls.Add(lblDeviceMarketSystem)
         pnlHeader.Location = New Point(25, 11)
@@ -83,7 +85,7 @@ Partial Class FrmInterface
         ' 
         lblDeviceMarketSystem.AutoSize = True
         lblDeviceMarketSystem.Font = New Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        lblDeviceMarketSystem.Location = New Point(757, 21)
+        lblDeviceMarketSystem.Location = New Point(757, 32)
         lblDeviceMarketSystem.Margin = New Padding(2, 0, 2, 0)
         lblDeviceMarketSystem.Name = "lblDeviceMarketSystem"
         lblDeviceMarketSystem.Size = New Size(336, 37)
@@ -151,14 +153,14 @@ Partial Class FrmInterface
         dgvProductDisplay.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill
         dgvProductDisplay.BackgroundColor = SystemColors.AppWorkspace
         dgvProductDisplay.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = SystemColors.Window
-        DataGridViewCellStyle1.Font = New Font("Segoe UI", 9F)
-        DataGridViewCellStyle1.ForeColor = SystemColors.ControlText
-        DataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = DataGridViewTriState.False
-        dgvProductDisplay.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = SystemColors.Window
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        dgvProductDisplay.DefaultCellStyle = DataGridViewCellStyle3
         dgvProductDisplay.Location = New Point(631, 119)
         dgvProductDisplay.Margin = New Padding(2)
         dgvProductDisplay.Name = "dgvProductDisplay"
@@ -363,6 +365,20 @@ Partial Class FrmInterface
         pbPicture.TabIndex = 10
         pbPicture.TabStop = False
         ' 
+        ' Label1
+        ' 
+        Label1.BackColor = Color.FromArgb(CByte(102), CByte(126), CByte(234))
+        Label1.Font = New Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.ForeColor = Color.White
+        Label1.Location = New Point(325, 21)
+        Label1.Margin = New Padding(2, 0, 2, 0)
+        Label1.Name = "Label1"
+        Label1.Padding = New Padding(20)
+        Label1.Size = New Size(1200, 89)
+        Label1.TabIndex = 4
+        Label1.Text = "DEVICE MARKET SYSTEM"
+        Label1.TextAlign = ContentAlignment.MiddleCenter
+        ' 
         ' FrmInterface
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
@@ -373,7 +389,7 @@ Partial Class FrmInterface
         Margin = New Padding(2)
         Name = "FrmInterface"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "Shopipi"
+        Text = "Device Market System"
         WindowState = FormWindowState.Maximized
         pnlHeader.ResumeLayout(False)
         pnlHeader.PerformLayout()
@@ -415,4 +431,5 @@ Partial Class FrmInterface
     Friend WithEvents BtnRemoveIMG As Button
     Friend WithEvents BtnUploadIMG As Button
     Friend WithEvents pbPicture As PictureBox
+    Friend WithEvents Label1 As Label
 End Class
