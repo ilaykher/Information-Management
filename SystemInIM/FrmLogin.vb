@@ -97,18 +97,6 @@ Public Class FrmLogin
         txtUsername.Focus()
     End Sub
 
-    Private Sub BtnNewAcc_Click(sender As Object, e As EventArgs) Handles BtnNewAcc.Click
-        Dim GoToCreateAcc As New FrmUserCreation()
-        GoToCreateAcc.Show()
-        Me.Hide()
-    End Sub
-
-    Private Sub BtnForgotPass_Click(sender As Object, e As EventArgs) Handles BtnForgotPass.Click
-        Dim ForgotPass As New FrmForgotPass()
-        ForgotPass.Show()
-        Me.Hide()
-    End Sub
-
     Private Sub BtnClear_Click(sender As Object, e As EventArgs) Handles BtnClear.Click
         If String.IsNullOrWhiteSpace(txtUsername.Text) And String.IsNullOrWhiteSpace(txtPassword.Text) Then
             MessageBox.Show("Fields are already empty.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -123,5 +111,17 @@ Public Class FrmLogin
 
     Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Dim GoToCreateAcc As New FrmUserCreation()
+        GoToCreateAcc.Show()
+        Hide()
+    End Sub
+
+    Private Sub LinkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel2.LinkClicked
+        Dim ForgotPass As New FrmForgotPass()
+        ForgotPass.Show()
+        Me.Hide()
     End Sub
 End Class

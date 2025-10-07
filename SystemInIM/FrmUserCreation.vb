@@ -21,13 +21,26 @@ Public Class FrmUserCreation
         txtCreateUsername.Focus()
     End Sub
 
-    Private Sub BtnBackToLogin_Click(sender As Object, e As EventArgs) Handles BtnBackToLogin.Click
-        Dim BackToLogin As New FrmLogin()
+    Private Sub BtnBackToLogin_Click(sender As Object, e As EventArgs)
+        Dim BackToLogin As New FrmLogin
         BackToLogin.Show()
-        Me.Hide()
+        Hide()
     End Sub
 
     Private Sub BtnRegister_Click(sender As Object, e As EventArgs) Handles BtnRegister.Click
+
+        'validation if cofirm password is correct:'
+        Dim confirmPassword As String = TextBox1.Text
+        Dim password As String = txtCreatePass.Text
+
+        If password <> confirmPassword Then
+            MessageBox.Show("Passwords do not match. Please re-enter.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            txtCreatePass.Clear()
+            TextBox1.Clear()
+            txtCreatePass.Focus()
+            Return
+
+        End If
 
         If cmbSecurityQuestion.SelectedIndex = -1 Then
             MessageBox.Show("Please select a security question.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
@@ -136,5 +149,15 @@ Public Class FrmUserCreation
     End Function
 
     Private Sub txtSecurityAnswer_TextChanged(sender As Object, e As EventArgs) Handles txtSecurityAnswer.TextChanged
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        Dim BackToLogin As New FrmLogin()
+        BackToLogin.Show()
+        Me.Hide()
+    End Sub
+
+    Private Sub TextBox1_TextChanged(sender As Object, e As EventArgs) Handles TextBox1.TextChanged
+
     End Sub
 End Class
