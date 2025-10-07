@@ -41,43 +41,45 @@ Partial Class FrmForgotPass
         ' lblForgotUsername
         ' 
         lblForgotUsername.AutoSize = True
-        lblForgotUsername.Font = New Font("Segoe UI", 12F)
-        lblForgotUsername.Location = New Point(85, 209)
+        lblForgotUsername.Font = New Font("Consolas", 14.25F)
+        lblForgotUsername.Location = New Point(124, 161)
         lblForgotUsername.Margin = New Padding(2, 0, 2, 0)
         lblForgotUsername.Name = "lblForgotUsername"
-        lblForgotUsername.Size = New Size(108, 28)
+        lblForgotUsername.Size = New Size(110, 22)
         lblForgotUsername.TabIndex = 0
         lblForgotUsername.Text = "Username: "
         ' 
         ' TxtForgotUsername
         ' 
-        TxtForgotUsername.Font = New Font("Segoe UI", 10F)
-        TxtForgotUsername.Location = New Point(197, 213)
+        TxtForgotUsername.Font = New Font("Consolas", 14.25F)
+        TxtForgotUsername.Location = New Point(238, 158)
         TxtForgotUsername.Margin = New Padding(2)
         TxtForgotUsername.Name = "TxtForgotUsername"
         TxtForgotUsername.PlaceholderText = "(e.g. user)"
-        TxtForgotUsername.Size = New Size(298, 30)
+        TxtForgotUsername.Size = New Size(261, 30)
         TxtForgotUsername.TabIndex = 1
         ' 
         ' BtnFindUsernameDB
         ' 
-        BtnFindUsernameDB.Font = New Font("Segoe UI", 12F)
-        BtnFindUsernameDB.Location = New Point(511, 213)
+        BtnFindUsernameDB.Font = New Font("Consolas", 14.25F)
+        BtnFindUsernameDB.Location = New Point(510, 157)
         BtnFindUsernameDB.Margin = New Padding(2)
         BtnFindUsernameDB.Name = "BtnFindUsernameDB"
-        BtnFindUsernameDB.Size = New Size(120, 40)
+        BtnFindUsernameDB.Size = New Size(105, 30)
         BtnFindUsernameDB.TabIndex = 2
         BtnFindUsernameDB.Text = "Find Account"
         BtnFindUsernameDB.UseVisualStyleBackColor = True
         ' 
         ' lblSec
         ' 
+        lblSec.AccessibleRole = AccessibleRole.None
         lblSec.AutoSize = True
-        lblSec.Font = New Font("Segoe UI", 12F)
-        lblSec.Location = New Point(23, 255)
+        lblSec.Font = New Font("Consolas", 14.25F)
+        lblSec.ForeColor = Color.DarkRed
+        lblSec.Location = New Point(34, 207)
         lblSec.Margin = New Padding(2, 0, 2, 0)
         lblSec.Name = "lblSec"
-        lblSec.Size = New Size(170, 28)
+        lblSec.Size = New Size(190, 22)
         lblSec.TabIndex = 3
         lblSec.Text = "Security Question:"
         lblSec.Visible = False
@@ -85,34 +87,35 @@ Partial Class FrmForgotPass
         ' lblAccountFound
         ' 
         lblAccountFound.AutoSize = True
-        lblAccountFound.Font = New Font("Segoe UI", 18F, FontStyle.Bold)
-        lblAccountFound.Location = New Point(85, 150)
+        lblAccountFound.Font = New Font("Consolas", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        lblAccountFound.Location = New Point(132, 117)
         lblAccountFound.Margin = New Padding(2, 0, 2, 0)
         lblAccountFound.Name = "lblAccountFound"
-        lblAccountFound.Size = New Size(327, 41)
+        lblAccountFound.Size = New Size(16, 18)
         lblAccountFound.TabIndex = 4
-        lblAccountFound.Text = "Account: UserAccount"
-        lblAccountFound.Visible = False
+        lblAccountFound.Text = "-"
         ' 
         ' TxtSecurityAns
         ' 
-        TxtSecurityAns.Font = New Font("Segoe UI", 10F)
-        TxtSecurityAns.Location = New Point(200, 309)
+        TxtSecurityAns.Font = New Font("Consolas", 14.25F)
+        TxtSecurityAns.Location = New Point(238, 255)
         TxtSecurityAns.Margin = New Padding(2)
         TxtSecurityAns.Name = "TxtSecurityAns"
         TxtSecurityAns.PlaceholderText = "(Input your answer here)"
-        TxtSecurityAns.Size = New Size(295, 30)
+        TxtSecurityAns.Size = New Size(259, 30)
         TxtSecurityAns.TabIndex = 5
         TxtSecurityAns.Visible = False
         ' 
         ' lblSecurityQuestion
         ' 
+        lblSecurityQuestion.AccessibleRole = AccessibleRole.None
         lblSecurityQuestion.AutoSize = True
-        lblSecurityQuestion.Font = New Font("Segoe UI", 12F)
-        lblSecurityQuestion.Location = New Point(197, 255)
+        lblSecurityQuestion.Font = New Font("Consolas", 14.25F)
+        lblSecurityQuestion.ForeColor = Color.DarkRed
+        lblSecurityQuestion.Location = New Point(238, 207)
         lblSecurityQuestion.Margin = New Padding(2, 0, 2, 0)
         lblSecurityQuestion.Name = "lblSecurityQuestion"
-        lblSecurityQuestion.Size = New Size(260, 28)
+        lblSecurityQuestion.Size = New Size(280, 22)
         lblSecurityQuestion.TabIndex = 6
         lblSecurityQuestion.Text = "Shows the Security Question"
         lblSecurityQuestion.Visible = False
@@ -120,34 +123,34 @@ Partial Class FrmForgotPass
         ' lblNewPass
         ' 
         lblNewPass.AutoSize = True
-        lblNewPass.Font = New Font("Segoe UI", 12F)
-        lblNewPass.Location = New Point(52, 366)
+        lblNewPass.Font = New Font("Consolas", 14.25F)
+        lblNewPass.Location = New Point(87, 304)
         lblNewPass.Margin = New Padding(2, 0, 2, 0)
         lblNewPass.Name = "lblNewPass"
-        lblNewPass.Size = New Size(141, 28)
+        lblNewPass.Size = New Size(140, 22)
         lblNewPass.TabIndex = 7
         lblNewPass.Text = "New Password:"
         lblNewPass.Visible = False
         ' 
         ' TxtNewPass
         ' 
-        TxtNewPass.Font = New Font("Segoe UI", 10F)
-        TxtNewPass.Location = New Point(197, 360)
+        TxtNewPass.Font = New Font("Consolas", 14.25F)
+        TxtNewPass.Location = New Point(236, 301)
         TxtNewPass.Margin = New Padding(2)
         TxtNewPass.Name = "TxtNewPass"
         TxtNewPass.PlaceholderText = "(Type in your new password)"
-        TxtNewPass.Size = New Size(298, 30)
+        TxtNewPass.Size = New Size(261, 30)
         TxtNewPass.TabIndex = 8
         TxtNewPass.UseSystemPasswordChar = True
         TxtNewPass.Visible = False
         ' 
         ' BtnConfirmation
         ' 
-        BtnConfirmation.Font = New Font("Segoe UI", 12F)
-        BtnConfirmation.Location = New Point(511, 298)
+        BtnConfirmation.Font = New Font("Consolas", 14.25F)
+        BtnConfirmation.Location = New Point(510, 254)
         BtnConfirmation.Margin = New Padding(2)
         BtnConfirmation.Name = "BtnConfirmation"
-        BtnConfirmation.Size = New Size(120, 40)
+        BtnConfirmation.Size = New Size(105, 31)
         BtnConfirmation.TabIndex = 9
         BtnConfirmation.Text = "Confirm"
         BtnConfirmation.UseVisualStyleBackColor = True
@@ -155,11 +158,11 @@ Partial Class FrmForgotPass
         ' 
         ' BtnUpdatePass
         ' 
-        BtnUpdatePass.Font = New Font("Segoe UI", 12F)
-        BtnUpdatePass.Location = New Point(511, 360)
+        BtnUpdatePass.Font = New Font("Consolas", 14.25F)
+        BtnUpdatePass.Location = New Point(510, 301)
         BtnUpdatePass.Margin = New Padding(2)
         BtnUpdatePass.Name = "BtnUpdatePass"
-        BtnUpdatePass.Size = New Size(120, 40)
+        BtnUpdatePass.Size = New Size(105, 31)
         BtnUpdatePass.TabIndex = 10
         BtnUpdatePass.Text = "Update Password"
         BtnUpdatePass.UseVisualStyleBackColor = True
@@ -167,11 +170,11 @@ Partial Class FrmForgotPass
         ' 
         ' BtnBack
         ' 
-        BtnBack.Font = New Font("Segoe UI", 12F)
-        BtnBack.Location = New Point(625, 21)
+        BtnBack.Font = New Font("Consolas", 14.25F)
+        BtnBack.Location = New Point(544, 20)
         BtnBack.Margin = New Padding(2)
         BtnBack.Name = "BtnBack"
-        BtnBack.Size = New Size(146, 40)
+        BtnBack.Size = New Size(157, 30)
         BtnBack.TabIndex = 11
         BtnBack.Text = "Back to Login"
         BtnBack.UseVisualStyleBackColor = True
@@ -179,30 +182,30 @@ Partial Class FrmForgotPass
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Font = New Font("Segoe UI", 18F, FontStyle.Bold)
-        Label1.Location = New Point(23, 17)
+        Label1.Font = New Font("Consolas", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(20, 20)
         Label1.Name = "Label1"
-        Label1.Size = New Size(385, 82)
+        Label1.Size = New Size(270, 44)
         Label1.TabIndex = 12
         Label1.Text = "Fill-up the corresponding " & vbCrLf & "information"
         ' 
         ' lblAnswerSec
         ' 
         lblAnswerSec.AutoSize = True
-        lblAnswerSec.Font = New Font("Segoe UI", 12F)
-        lblAnswerSec.Location = New Point(114, 310)
+        lblAnswerSec.Font = New Font("Consolas", 14.25F)
+        lblAnswerSec.Location = New Point(147, 258)
         lblAnswerSec.Margin = New Padding(2, 0, 2, 0)
         lblAnswerSec.Name = "lblAnswerSec"
-        lblAnswerSec.Size = New Size(79, 28)
+        lblAnswerSec.Size = New Size(80, 22)
         lblAnswerSec.TabIndex = 13
         lblAnswerSec.Text = "Answer:"
         lblAnswerSec.Visible = False
         ' 
         ' FrmForgotPass
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(782, 553)
+        ClientSize = New Size(725, 378)
         Controls.Add(lblAnswerSec)
         Controls.Add(Label1)
         Controls.Add(BtnBack)

@@ -13,13 +13,15 @@ Public Class FrmForgotPass
         Dim inputUsername As String = TxtForgotUsername.Text.Trim()
 
         If String.IsNullOrWhiteSpace(inputUsername) Then
-            MessageBox.Show("Enter a username.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            lblAccountFound.ForeColor = Color.Red
+            lblAccountFound.Text = "Username field cannot be left blank. Please enter your username."
             TxtForgotUsername.Focus()
             Return
         End If
 
         If inputUsername.Length < 3 Then
-            MessageBox.Show("Username should be at least 3 characters.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            lblAccountFound.ForeColor = Color.Red
+            lblAccountFound.Text = "Username should be at least 3 characters."
             TxtForgotUsername.Focus()
             Return
         End If
@@ -37,6 +39,7 @@ Public Class FrmForgotPass
                 If reader.Read() Then
                     ' Username found
                     currentUsername = TxtForgotUsername.Text
+                    lblAccountFound.ForeColor = Color.Green
                     lblAccountFound.Text = "Account found: " & currentUsername
                     lblAccountFound.Visible = True
 
@@ -47,7 +50,8 @@ Public Class FrmForgotPass
                     BtnConfirmation.Visible = True
                     lblAnswerSec.Visible = True
                 Else
-                    MessageBox.Show("No account found. Double-check the username or create a new account.")
+                    lblAccountFound.ForeColor = Color.Red
+                    lblAccountFound.Text = "No account found. Double-check the username or create a new account.."
                 End If
 
                 reader.Close()
