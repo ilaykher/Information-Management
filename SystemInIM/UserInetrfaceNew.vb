@@ -53,6 +53,8 @@ Public Class UserInetrfaceNew
 
                 Dim count As Integer = 0
 
+
+
                 While reader.Read()
                     ' === Create a Card Panel ===
                     Dim card As New Panel With {
@@ -102,6 +104,7 @@ Public Class UserInetrfaceNew
                     }
                     card.Controls.Add(lblCategory)
 
+                    Dim productName As String = reader("product_name").ToString()
 
                     ' === Add to Cart Button ===
                     Dim btnAdd As New Button With {
@@ -109,9 +112,24 @@ Public Class UserInetrfaceNew
                         .BackColor = Color.FromArgb(230, 200, 160),
                         .FlatStyle = FlatStyle.Popup,
                         .Location = New Point(150, 350),
-                        .Size = New Size(130, 25)
+                        .Size = New Size(130, 25),
+                        .Tag = New With {
+                        .Name = productName    'GET PRODUCT NAME OF WHICHEVER CARD WAS CLICKED'
+                        }
                     }
-                    AddHandler btnAdd.Click, Sub() MessageBox.Show("Added: " & lblName.Text)
+
+                    '=========== EVENT HANDLER FOR VIEW BUTTON =================
+                    AddHandler btnAdd.Click, Sub(sender As Object, e As EventArgs)
+
+                                                 Dim btn As Button = DirectCast(sender, Button)
+                                                 Dim info = btn.Tag
+
+                                                 ' Example: open your ProductDetails form and pass data
+                                                 Dim Details As New ProductDetails()
+                                                 Details.ProductName = info.Name
+                                                 Details.Show()
+
+                                             End Sub
                     card.Controls.Add(btnAdd)
 
                     ' === Positioning ===

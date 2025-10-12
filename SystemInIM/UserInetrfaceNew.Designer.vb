@@ -98,7 +98,7 @@ Partial Class UserInetrfaceNew
         Button1.FlatStyle = FlatStyle.Flat
         Button1.Font = New Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Button1.ForeColor = Color.OldLace
-        Button1.Location = New Point(166, 362)
+        Button1.Location = New Point(166, 360)
         Button1.Name = "Button1"
         Button1.Size = New Size(116, 32)
         Button1.TabIndex = 3
