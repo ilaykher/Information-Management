@@ -68,10 +68,8 @@ Public Class FrmLogin
                         adminForm.Show()
                     Else
                         ' Show User Interface - *** PASS THE DATA! ***
-                        Dim userForm As New FrmUserInterface()
-                        userForm.LoggedInUserID = userId           ' ← SET THIS!
-                        userForm.LoggedInUsername = loggedUsername ' ← SET THIS!
-                        userForm.Show()
+                        Dim userform As New UserInetrfaceNew()
+                        userform.Show()
                     End If
                 Else
                     ' Login failed
