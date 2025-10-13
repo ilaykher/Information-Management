@@ -40,6 +40,7 @@ Partial Class UserInetrfaceNew
         Label6 = New Label()
         RadioButton1 = New RadioButton()
         Panel1 = New Panel()
+        Button2 = New Button()
         RadioButton3 = New RadioButton()
         Panel8 = New Panel()
         Label10 = New Label()
@@ -247,6 +248,7 @@ Partial Class UserInetrfaceNew
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightSlateGray
+        Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(RadioButton3)
         Panel1.Controls.Add(Panel8)
         Panel1.Controls.Add(Label10)
@@ -265,6 +267,15 @@ Partial Class UserInetrfaceNew
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(300, 767)
         Panel1.TabIndex = 0
+        ' 
+        ' Button2
+        ' 
+        Button2.Location = New Point(208, 725)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(75, 23)
+        Button2.TabIndex = 13
+        Button2.Text = "Button2"
+        Button2.UseVisualStyleBackColor = True
         ' 
         ' RadioButton3
         ' 
@@ -406,4 +417,5 @@ Partial Class UserInetrfaceNew
     Friend WithEvents Label11 As Label
     Friend WithEvents Button1 As Button
     Friend WithEvents RadioButton3 As RadioButton
+    Friend WithEvents Button2 As Button
 End Class

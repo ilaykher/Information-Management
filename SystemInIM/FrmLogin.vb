@@ -1,6 +1,10 @@
 ﻿Imports MySql.Data.MySqlClient
 ' Add this line at the top of your FrmLogin file
 
+Module Globals
+    Public LoggedInUserId As Integer
+End Module
+
 Public Class FrmLogin
 
     ' Connection string should be declared once at the class level or form level
@@ -55,6 +59,8 @@ Public Class FrmLogin
                     Dim userId As Integer = Convert.ToInt32(reader("user_id"))
                     Dim loggedUsername As String = reader("username").ToString()
                     Dim isAdmin As Boolean = (loggedUsername.ToLower() = "admin")
+
+                    Globals.LoggedInUserId = userId ' Store the logged-in user's ID in the global variable
 
                     reader.Close()
 

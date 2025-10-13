@@ -7,7 +7,7 @@ Public Class FrmUserInterface
 
     ' USER INFO
     Public LoggedInUsername As String = ""
-    Public LoggedInUserID As Integer = 0
+    Public LoggedInUserID As Integer = Globals.LoggedInUserId
 
     ' DATABASE CONNECTION (Centralized)
     Private ReadOnly ConnString As String = "server=localhost;user=root;password=;database=information_management"
@@ -627,5 +627,7 @@ Public Class FrmUserInterface
         End Using
     End Sub
 
+    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
+    End Sub
 End Class

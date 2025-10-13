@@ -160,5 +160,17 @@ Public Class UserInetrfaceNew
         Label10.Text = "Price: ₱" & TrackBar2.Value.ToString()
     End Sub
 
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+        Dim cart As New ViewCart()
+        cart.Show()
+    End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        Dim debug As New FrmUserInterface()
+        debug.Show()
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+
+    End Sub
 End Class

@@ -10,6 +10,12 @@ Public Class ProductDetails
         DisplayDetailsOf(ProductName)
     End Sub
 
+    'Variable dcleration for selected item'
+    Dim selectedProductID As Integer
+    Dim selectedProductName As String
+    Dim selectedPrice As Decimal
+    Dim selectedDescription As String
+    Dim selectedStock As Integer
 
     '============== Show Product Detail Function ===================
 
@@ -32,6 +38,15 @@ Public Class ProductDetails
                     Label5.Text = "Stock: " & reader("stock").ToString()
                     Label6.Text = "Created Date: " & reader("created_date").ToString()
                     Dim imagePath As String = reader("image_path").ToString()
+
+                    '=======asssign to variables i created aboove=========='
+
+                    selectedProductID = Convert.ToInt32(reader("product_id"))
+                    selectedProductName = reader("product_name").ToString()
+                    selectedPrice = Convert.ToDecimal(reader("price"))
+                    selectedDescription = reader("description").ToString()
+                    selectedStock = Convert.ToInt32(reader("stock"))
+
                     If Not String.IsNullOrEmpty(imagePath) AndAlso IO.File.Exists(imagePath) Then
                         PictureBox1.Image = Image.FromFile(imagePath)
                         PictureBox1.SizeMode = PictureBoxSizeMode.Zoom
@@ -47,6 +62,84 @@ Public Class ProductDetails
 
         End Using
 
+
+    End Sub
+
+
+    '=================Add to cart button========================
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        addTocart(LoggedInUserId, selectedProductID, selectedProductName, selectedPrice, selectedStock, selectedDescription)
+    End Sub
+
+    '=====================Add to cart function======================= 
+    Public Sub addTocart(userID As Integer, productID As String, productName As String, price As Integer, stock As Integer, description As String)
+
+        'Dim selectedRow As DataGridViewRow = dgvProductDisplay.SelectedRows(0)
+        'Dim productID As Integer = Convert.ToInt32(selectedRow.Cells("product_id").Value)
+        'Dim productName As String = selectedRow.Cells("product_name").Value.ToString()
+        'Dim price As Decimal = Convert.ToDecimal(selectedRow.Cells("price").Value)
+        'Dim stock As Integer = Convert.ToInt32(selectedRow.Cells("stock").Value)
+        'Dim description As String = selectedRow.Cells("description").Value.ToString()
+
+        Const QTY_TO_ADD As Integer = 1
+
+        If stock <= 0 Then
+            MessageBox.Show("Out of stock!")
+            Return
+        End If
+
+        Using conn As New MySqlConnection("server=localhost;user=root;password=;database=information_management")
+            Try
+                conn.Open()
+
+                ' 1. Check if item exists in cart and check stock limit
+                Dim checkQuery As String = "SELECT quantity FROM cart WHERE user_id = @uid AND product_id = @pid"
+                Dim currentQty As Integer = 0
+                Using checkCmd As New MySqlCommand(checkQuery, conn)
+                    checkCmd.Parameters.AddWithValue("@uid", LoggedInUserId)
+                    checkCmd.Parameters.AddWithValue("@pid", productID)
+                    Dim result = checkCmd.ExecuteScalar()
+                    If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                        currentQty = Convert.ToInt32(result)
+                    End If
+                End Using
+
+                If currentQty + QTY_TO_ADD > stock Then
+                    MessageBox.Show("Cannot add more! Only " & stock & " total available in stock.")
+                    Return
+                End If
+
+                Dim newTotalQty As Integer = currentQty + QTY_TO_ADD
+
+                If currentQty > 0 Then
+                    ' 2. Item exists: Update quantity
+                    Dim updateQuery As String = "UPDATE cart SET quantity = quantity + @qty WHERE user_id = @uid AND product_id = @pid"
+                    Using updateCmd As New MySqlCommand(updateQuery, conn)
+                        updateCmd.Parameters.AddWithValue("@qty", QTY_TO_ADD)
+                        updateCmd.Parameters.AddWithValue("@uid", LoggedInUserId)
+                        updateCmd.Parameters.AddWithValue("@pid", productID)
+                        updateCmd.ExecuteNonQuery()
+                    End Using
+                Else
+                    ' 3. Item does not exist: Insert new row
+                    Dim insertQuery As String = "INSERT INTO cart (user_id, product_id, product_name, price, description, quantity) VALUES (@uid, @pid, @pname, @price, @desc, @qty)"
+                    Using insertCmd As New MySqlCommand(insertQuery, conn)
+                        insertCmd.Parameters.AddWithValue("@uid", LoggedInUserId)
+                        insertCmd.Parameters.AddWithValue("@pid", productID)
+                        insertCmd.Parameters.AddWithValue("@pname", productName)
+                        insertCmd.Parameters.AddWithValue("@price", price)
+                        insertCmd.Parameters.AddWithValue("@desc", description)
+                        insertCmd.Parameters.AddWithValue("@qty", QTY_TO_ADD)
+                        insertCmd.ExecuteNonQuery()
+                    End Using
+                End If
+
+                MessageBox.Show(productName & " added to cart! Current Quantity: " & newTotalQty)
+
+            Catch ex As Exception
+                MessageBox.Show("Error adding to cart: " & ex.Message)
+            End Try
+        End Using
 
     End Sub
 
