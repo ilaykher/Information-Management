@@ -3,6 +3,7 @@
 
 Module Globals
     Public LoggedInUserId As Integer
+    Public paymentIsOpened As Boolean = False
 End Module
 
 Public Class FrmLogin

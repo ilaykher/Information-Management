@@ -40,10 +40,9 @@ Partial Class ProductDetails
         ' PictureBox1
         ' 
         PictureBox1.Image = My.Resources.Resources._3_Tasten_Maus_Microsoft
-        PictureBox1.Location = New Point(26, 31)
-        PictureBox1.Margin = New Padding(3, 4, 3, 4)
+        PictureBox1.Location = New Point(23, 23)
         PictureBox1.Name = "PictureBox1"
-        PictureBox1.Size = New Size(261, 303)
+        PictureBox1.Size = New Size(228, 227)
         PictureBox1.SizeMode = PictureBoxSizeMode.StretchImage
         PictureBox1.TabIndex = 0
         PictureBox1.TabStop = False
@@ -53,10 +52,9 @@ Partial Class ProductDetails
         Button1.BackColor = Color.SlateGray
         Button1.FlatAppearance.BorderSize = 0
         Button1.ForeColor = SystemColors.Info
-        Button1.Location = New Point(713, 715)
-        Button1.Margin = New Padding(3, 4, 3, 4)
+        Button1.Location = New Point(624, 536)
         Button1.Name = "Button1"
-        Button1.Size = New Size(159, 47)
+        Button1.Size = New Size(139, 35)
         Button1.TabIndex = 1
         Button1.Text = "BUY NOW"
         Button1.UseVisualStyleBackColor = False
@@ -66,10 +64,9 @@ Partial Class ProductDetails
         Button2.BackColor = Color.SlateGray
         Button2.FlatAppearance.BorderSize = 0
         Button2.ForeColor = SystemColors.Info
-        Button2.Location = New Point(895, 715)
-        Button2.Margin = New Padding(3, 4, 3, 4)
+        Button2.Location = New Point(783, 536)
         Button2.Name = "Button2"
-        Button2.Size = New Size(159, 47)
+        Button2.Size = New Size(139, 35)
         Button2.TabIndex = 2
         Button2.Text = "ADD TO CART"
         Button2.UseVisualStyleBackColor = False
@@ -79,9 +76,9 @@ Partial Class ProductDetails
         Label1.AutoSize = True
         Label1.Font = New Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label1.ForeColor = Color.FromArgb(CByte(80), CByte(105), CByte(129))
-        Label1.Location = New Point(386, 67)
+        Label1.Location = New Point(338, 50)
         Label1.Name = "Label1"
-        Label1.Size = New Size(194, 41)
+        Label1.Size = New Size(153, 32)
         Label1.TabIndex = 3
         Label1.Text = "Product Title"
         ' 
@@ -90,47 +87,45 @@ Partial Class ProductDetails
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.IndianRed
-        Label2.Location = New Point(445, 140)
+        Label2.Location = New Point(389, 105)
         Label2.Name = "Label2"
-        Label2.Size = New Size(108, 28)
+        Label2.Size = New Size(88, 21)
         Label2.TabIndex = 4
         Label2.Text = "PHP 20000"
         ' 
         ' Panel1
         ' 
         Panel1.BackColor = Color.LightSlateGray
-        Panel1.Location = New Point(14, 16)
-        Panel1.Margin = New Padding(3, 4, 3, 4)
+        Panel1.Location = New Point(12, 12)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(250, 299)
+        Panel1.Size = New Size(219, 224)
         Panel1.TabIndex = 5
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(18, 28)
+        Label3.Location = New Point(16, 21)
         Label3.Name = "Label3"
-        Label3.Size = New Size(173, 28)
+        Label3.Size = New Size(137, 21)
         Label3.TabIndex = 6
         Label3.Text = "Lonbg Description"
         ' 
         ' Panel2
         ' 
         Panel2.Controls.Add(Label3)
-        Panel2.Location = New Point(386, 233)
-        Panel2.Margin = New Padding(3, 4, 3, 4)
+        Panel2.Location = New Point(338, 175)
         Panel2.Name = "Panel2"
-        Panel2.Size = New Size(686, 425)
+        Panel2.Size = New Size(600, 319)
         Panel2.TabIndex = 7
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(26, 381)
+        Label4.Location = New Point(23, 286)
         Label4.Name = "Label4"
-        Label4.Size = New Size(97, 25)
+        Label4.Size = New Size(76, 20)
         Label4.TabIndex = 8
         Label4.Text = "Category: "
         ' 
@@ -138,9 +133,9 @@ Partial Class ProductDetails
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(26, 427)
+        Label5.Location = New Point(23, 320)
         Label5.Name = "Label5"
-        Label5.Size = New Size(60, 25)
+        Label5.Size = New Size(48, 20)
         Label5.TabIndex = 9
         Label5.Text = "Stock:"
         Label5.TextAlign = ContentAlignment.TopCenter
@@ -149,18 +144,18 @@ Partial Class ProductDetails
         ' 
         Label6.AutoSize = True
         Label6.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label6.Location = New Point(26, 471)
+        Label6.Location = New Point(23, 353)
         Label6.Name = "Label6"
-        Label6.Size = New Size(181, 25)
+        Label6.Size = New Size(144, 20)
         Label6.TabIndex = 10
         Label6.Text = "Date Listed For Sale:"
         ' 
         ' ProductDetails
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.OldLace
-        ClientSize = New Size(1107, 804)
+        ClientSize = New Size(969, 603)
         Controls.Add(Label6)
         Controls.Add(Label5)
         Controls.Add(Label4)
@@ -171,7 +166,6 @@ Partial Class ProductDetails
         Controls.Add(Label1)
         Controls.Add(Button2)
         Controls.Add(Button1)
-        Margin = New Padding(3, 4, 3, 4)
         Name = "ProductDetails"
         Text = "ProductDetails"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()

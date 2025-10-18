@@ -74,13 +74,6 @@ Public Class ProductDetails
     '=====================Add to cart function======================= 
     Public Sub addTocart(userID As Integer, productID As String, productName As String, price As Integer, stock As Integer, description As String)
 
-        'Dim selectedRow As DataGridViewRow = dgvProductDisplay.SelectedRows(0)
-        'Dim productID As Integer = Convert.ToInt32(selectedRow.Cells("product_id").Value)
-        'Dim productName As String = selectedRow.Cells("product_name").Value.ToString()
-        'Dim price As Decimal = Convert.ToDecimal(selectedRow.Cells("price").Value)
-        'Dim stock As Integer = Convert.ToInt32(selectedRow.Cells("stock").Value)
-        'Dim description As String = selectedRow.Cells("description").Value.ToString()
-
         Const QTY_TO_ADD As Integer = 1
 
         If stock <= 0 Then
@@ -147,5 +140,28 @@ Public Class ProductDetails
 
     End Sub
 
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If paymentIsOpened Then
+            ' Bring existing payment form to front if already open
+            For Each frm As Form In Application.OpenForms
+                If TypeOf frm Is modeOfPayment Then
+                    frm.BringToFront()
+                    Exit For
+                End If
+            Next
+            Return
+        End If
+
+        ' Create and pass product info
+        Dim payment As New modeOfPayment()
+        payment.ProductID = selectedProductID
+        payment.ProductName = selectedProductName
+        payment.ProductPrice = selectedPrice
+        payment.ProductQuantity = 1 ' Default or let user choose later
+        payment.ProductDescription = selectedDescription
+
+        payment.Show()
+        paymentIsOpened = True
+    End Sub
 
 End Class

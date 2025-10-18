@@ -29,10 +29,10 @@ Partial Class ViewCart
         ComboBox1 = New ComboBox()
         TextBox1 = New TextBox()
         Panel2 = New Panel()
+        Button3 = New Button()
         Label3 = New Label()
         Label2 = New Label()
         Button2 = New Button()
-        CheckBox1 = New CheckBox()
         Button1 = New Button()
         CType(DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
@@ -104,22 +104,33 @@ Partial Class ViewCart
         ' Panel2
         ' 
         Panel2.BackColor = Color.LightSlateGray
+        Panel2.Controls.Add(Button3)
         Panel2.Controls.Add(Label3)
         Panel2.Controls.Add(Label2)
         Panel2.Controls.Add(Button2)
-        Panel2.Controls.Add(CheckBox1)
         Panel2.Controls.Add(Button1)
         Panel2.Location = New Point(3, 556)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(1006, 73)
         Panel2.TabIndex = 2
         ' 
+        ' Button3
+        ' 
+        Button3.BackColor = Color.FloralWhite
+        Button3.FlatStyle = FlatStyle.Flat
+        Button3.Location = New Point(20, 21)
+        Button3.Name = "Button3"
+        Button3.Size = New Size(122, 29)
+        Button3.TabIndex = 5
+        Button3.Text = "Select All"
+        Button3.UseVisualStyleBackColor = False
+        ' 
         ' Label3
         ' 
         Label3.AutoSize = True
         Label3.Font = New Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Label3.ForeColor = Color.MistyRose
-        Label3.Location = New Point(764, 21)
+        Label3.Location = New Point(551, 25)
         Label3.Name = "Label3"
         Label3.Size = New Size(34, 25)
         Label3.TabIndex = 4
@@ -130,7 +141,7 @@ Partial Class ViewCart
         Label2.AutoSize = True
         Label2.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Label2.ForeColor = Color.Linen
-        Label2.Location = New Point(655, 23)
+        Label2.Location = New Point(442, 24)
         Label2.Name = "Label2"
         Label2.Size = New Size(103, 21)
         Label2.TabIndex = 3
@@ -146,18 +157,6 @@ Partial Class ViewCart
         Button2.TabIndex = 2
         Button2.Text = "Delete"
         Button2.UseVisualStyleBackColor = False
-        ' 
-        ' CheckBox1
-        ' 
-        CheckBox1.AutoSize = True
-        CheckBox1.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        CheckBox1.ForeColor = Color.Linen
-        CheckBox1.Location = New Point(35, 22)
-        CheckBox1.Name = "CheckBox1"
-        CheckBox1.Size = New Size(92, 25)
-        CheckBox1.TabIndex = 1
-        CheckBox1.Text = "Select All"
-        CheckBox1.UseVisualStyleBackColor = True
         ' 
         ' Button1
         ' 
@@ -199,6 +198,6 @@ Partial Class ViewCart
     Friend WithEvents Button1 As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Button2 As Button
-    Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents Label3 As Label
+    Friend WithEvents Button3 As Button
 End Class

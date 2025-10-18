@@ -166,7 +166,7 @@ Public Class UserInetrfaceNew
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Dim debug As New FrmUserInterface()
+        Dim debug As New transactionHistory()
         debug.Show()
     End Sub
 
